@@ -5,25 +5,19 @@
 ### NCL based scripts
 [NCL](http://www.ncl.ucar.edu/) is a free interpreted language designed for scientific data processing and visualization.  NCL is available for a variety of operating systems including Linux, Mac OS X, and Cygwin/X running on Windows. It supports netCDF 3/4, GRIB 1/2, HDF 4/5, HDF_EOS 2/5, shapefile, ASCII, binary.
 
-* [plotgrids.ncl](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Graphics/NCL/Examples/EXPERIMENTAL/wrf_show_wps_som_namelist.htm)
-It is a script to read the WPS namelist and plot corresponding domains.
-
-* [wrfout_to_cf.ncl](http://foehn.colorado.edu/wrfout_to_cf/)
-
-It is an NCL based script to create new CF based NetCDF files from native wrfout NetCDF files.
+* [plotgrids.ncl](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Graphics/NCL/Examples/EXPERIMENTAL/wrf_show_wps_som_namelist.htm) - a script to read the WPS namelist and plot corresponding domains.
+* [wrfout_to_cf.ncl](http://foehn.colorado.edu/wrfout_to_cf/) - an NCL based script to create new CF based NetCDF files from native wrfout NetCDF files.
 
 ------------------------------------------------------
 To get started with NCL
-
-[ncl_tutorial_1.ncl](https://code.mpimet.mpg.de/projects/miklip-d-integration/wiki/NCL_simple_plot#NCL)
-
-[NCL based code](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Graphics/NCL/NCL_examples.htm)
+* [ncl_tutorial_1.ncl](https://code.mpimet.mpg.de/projects/miklip-d-integration/wiki/NCL_simple_plot#NCL)
+* [NCL based code](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/Graphics/NCL/NCL_examples.htm)
 
 ### WRF Utilities [Downloads](http://www2.mmm.ucar.edu/wrf/users/download/get_sources.html#utilities) (fortran code)
 
 [read_wrf_nc](http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3.9/users_guide_chap10.htm#read_wrf_nc)
-– Display data in a wrfout netCDF file
-– Specific points; min/max of fields; time series; edit data in file (NCL better)
+* Display data in a wrfout netCDF file
+* Specific points; min/max of fields; time series; edit data in file (NCL better)
 ```
 Compile 
 Refer to the following troubleshooting as extra code should be included.
@@ -45,17 +39,17 @@ wrf_interp
 gfortran -o wrf_interp.exe wrf_interp.F90 -I/home/mason/build_wrf/LIBRARIES/netcdff/include -free -L/home/mason/build_wrf/LIBRARIES/netcdf/lib -lnetcdff -lnetcdf
 ```
 
-------------------------------------------------------
-Toubleshooting
-If you meet the problem: 
+## Toubleshooting
+
+* Add gfortran_iargs.c if you meet the problem: 
 ```
-iowrf.f:(.text+0x7b6): undefined reference to `iargc_'
+iowrf.f:(.text+0x7b6): undefined reference to `iargc_`
 collect2: error: ld returned 1 exit status
 ```
 
 Do as below:
 ```
-Compiling read_wrf_nc/iowrf with gfortran
+Compile read_wrf_nc/iowrf with gfortran
 gfortran lacks iargc, so compile gfortran_iargc.c at first
 $ gfortran -c gfortran_iargs.c
 then
